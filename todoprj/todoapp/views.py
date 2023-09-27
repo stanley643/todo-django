@@ -11,7 +11,7 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        
+        new_user = User.objects.create_user(username=username, email=email, password=password)
     return render(request, 'todoapp/register.html', {})
 
 def loginpage(request):

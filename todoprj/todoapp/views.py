@@ -27,5 +27,8 @@ def register(request):
     return render(request, 'todoapp/register.html', {})
 
 def loginpage(request):
+    if request.method == 'POST':
+        username = request.POST.get('uname')
+        password = request.POST.get('pass')
     return render(request, 'todoapp/login.html', {})
 

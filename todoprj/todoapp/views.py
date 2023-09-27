@@ -15,6 +15,12 @@ def register(request):
         if len(password) < 4:
             messages.error(request, 'Pasword must be at least 4 characters')
             return redirect('register')
+        
+
+        get_all_users_by_username = User.objects.filter(username=username)
+        if get_all_users_by_username:
+            messages.error(request, 'error, username already exists')
+            return redirect('register')
 
         new_user = User.objects.create_user(username=username, email=email, password=password)
         new_user.save()

@@ -12,6 +12,10 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
+        if len(password) < 4:
+            messages.error(request, 'Pasword must be at least 4 characters')
+            return redirect('register')
+
         new_user = User.objects.create_user(username=username, email=email, password=password)
         new_user.save()
     return render(request, 'todoapp/register.html', {})

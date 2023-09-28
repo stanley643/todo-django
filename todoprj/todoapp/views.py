@@ -20,6 +20,8 @@ def home(request):
     return render(request, 'todoapp/todo.html', context)
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
     if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -47,6 +49,8 @@ def LogoutView(request):
     return redirect('login')
 
 def loginpage(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
     if request.method == 'POST':
         username = request.POST.get('uname')
         password = request.POST.get('pass')

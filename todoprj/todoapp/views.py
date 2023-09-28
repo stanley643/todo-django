@@ -30,5 +30,7 @@ def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('uname')
         password = request.POST.get('pass')
+
+        validate_user = authenticate(username=username)
     return render(request, 'todoapp/login.html', {})
 

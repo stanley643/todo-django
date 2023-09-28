@@ -24,6 +24,9 @@ def register(request):
 
         new_user = User.objects.create_user(username=username, email=email, password=password)
         new_user.save()
+        
+        messages.success(request, 'User successfully created, login now')
+        return redirect('login')
     return render(request, 'todoapp/register.html', {})
 
 def loginpage(request):

@@ -39,6 +39,10 @@ def register(request):
         return redirect('login')
     return render(request, 'todoapp/register.html', {})
 
+def logout(request):
+    logout(request)
+    return redirect('login')
+
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('uname')
@@ -60,5 +64,9 @@ def DeleteTask(request, name):
     return redirect('home-page')
 
 def Update(request, name):
-    pass
+    get_todo = todo.objects.get(user=request.user, todo_name=name)
+    get_todo.status = True
+    get_todo.save()
+    return redirect('home-page')
+
 

@@ -61,11 +61,13 @@ def loginpage(request):
         
     return render(request, 'todoapp/login.html', {})
 
+@login_required
 def DeleteTask(request, name):
     get_todo = todo.objects.get(user=request.user, todo_name=name)
     get_todo.delete()
     return redirect('home-page')
 
+@login_required
 def Update(request, name):
     get_todo = todo.objects.get(user=request.user, todo_name=name)
     get_todo.status = True

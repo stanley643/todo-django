@@ -54,3 +54,9 @@ def loginpage(request):
         
     return render(request, 'todoapp/login.html', {})
 
+def DeleteTask(request, name):
+    pass
+
+def Update(request, name):
+    pass
+

@@ -39,7 +39,7 @@ def register(request):
         return redirect('login')
     return render(request, 'todoapp/register.html', {})
 
-def logout(request):
+def LogoutView(request):
     logout(request)
     return redirect('login')
 

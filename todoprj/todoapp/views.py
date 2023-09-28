@@ -35,6 +35,9 @@ def loginpage(request):
         if validate_user is not None:
             login(request, validate_user)
             return redirect('home-page')
+        else:
+            messages.error(request, 'error, wrong user details or user does not exist')
+            return redirect('login')
         
     return render(request, 'todoapp/login.html', {})
 

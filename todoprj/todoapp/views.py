@@ -31,6 +31,10 @@ def loginpage(request):
         username = request.POST.get('uname')
         password = request.POST.get('pass')
 
-        validate_user = authenticate(username=username)
+        validate_user = authenticate(username=username, password=password)
+        if validate_user is not None:
+            login(request, validate_user)
+            return redirect('home-page')
+        
     return render(request, 'todoapp/login.html', {})
 
